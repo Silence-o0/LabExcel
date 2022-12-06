@@ -1,5 +1,6 @@
 ﻿using LabExcel;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -9,7 +10,6 @@ namespace LabCalculator
 {
     class LabCalculatorVisitor : LabCalculatorBaseVisitor<double>
 {
-        Dictionary<string, double> tableIdentifier = new Dictionary<string, double>();
         public override double VisitCompileUnit(LabCalculatorParser.CompileUnitContext context)
         {
             return Visit(context.expression());
@@ -24,30 +24,69 @@ namespace LabCalculator
         //IdentifierExpr
         public override double VisitIdentifierExpr(LabCalculatorParser.IdentifierExprContext context)
         {
-                
+
+
             var result = context.GetText();
-            double value;
+            double value = 0.0;
+            //видобути значення змінної з таблиці
+            //            if (Data.tableIdentifier.TryGetValue(result.ToString(), out value))
+            //            {
+            //                return value;
+            //            }
+            //            else
+            //            {
+            //                return 0.0;
+            //            }
 
-            char columnLetter = result[0];
-            int column = (int)columnLetter - 65;
+            var element = (from list in Data.cellsList
+                           from cell in list
+                           where cell.Name == result
+                           select cell).FirstOrDefault();
 
-            int row = Int32.Parse(result.Substring(1));
+            value = double.Parse(element.Value);
 
-            mainForm form = new mainForm();
-            value = (double)(form.dataGridView.Rows[row].Cells[column].Value);
+            return value;
 
-            Debug.WriteLine(value);
 
-            return 0.0;
- //           if (tableIdentifier.TryGetValue(result.ToString(), out value))
- //           {
- //               return value;
- //           }
- //           else
- //           {
- //               return 0.0;
- //           }
+
+
         }
+
+        //          var result = context.GetText();
+        //          double value = 0.0;
+        //видобути значення змінної з таблиці
+
+        //           foreach (List<DataCell> list in Data.cellsList)
+        //           {
+        //               value = Double.Parse(list.Find(i => i.Name == result).Value);
+        //           }
+        //               return value;
+        //       }
+
+        //       var result = context.GetText();
+        //           double value;
+
+        //            char columnLetter = result[0];
+        //            int column = (int)columnLetter - 65;
+
+        //            int row = Int32.Parse(result.Substring(1));
+
+        //            mainForm form = new mainForm();
+        //            value = Double.Parse(Data.cellsList[row][column].Value);
+        //           value = (double)(form.dataGridView.Rows[row].Cells[column].Value);
+
+        //            Debug.WriteLine(value);
+
+        //          return value;
+        //           if (tableIdentifier.TryGetValue(result.ToString(), out value))
+        //           {
+        //               return value;
+        //           }
+        //           else
+        //           {
+        //               return 0.0;
+        //           }
+        //       }
         public override double VisitParenthesizedExpr(LabCalculatorParser.ParenthesizedExprContext context)
         {
             return Visit(context.expression());

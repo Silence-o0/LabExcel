@@ -5,7 +5,6 @@ namespace LabExcel
 {
     public partial class mainForm : Form
     {
-        public List<List<string>> formulas = new List<List<string>>();
         public mainForm()
         {
             InitializeComponent();
@@ -19,19 +18,19 @@ namespace LabExcel
             {
                 this.dataGridView.Rows[i].HeaderCell.Value = (i + 1).ToString();
 
-                List<string> l = new List<string>();
+                List<DataCell> row = new List<DataCell>();
                 for (int j = 0; j < this.dataGridView.Columns.Count; j++)
                 {
-                    l.Add(null);
+                    row.Add(new DataCell(j, i));
                 }
-                formulas.Add(l);
+                Data.cellsList.Add(row);
             }
         }
 
-        private void AddNewRow()
-        {
-            formulas.Add(new List<string>());
-        }
+ //       private void AddNewRow()
+ //       {
+ //           formulas.Add(new List<string>());
+ //       }
         
 
         private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -39,7 +38,7 @@ namespace LabExcel
                 if (dataGridView.SelectedCells.Count == 1)
                 {
 
-                    formulaTextBox.Text = formulas[dataGridView.SelectedCells[0].RowIndex][dataGridView.SelectedCells[0].ColumnIndex];
+                    formulaTextBox.Text = Data.cellsList[dataGridView.SelectedCells[0].RowIndex][dataGridView.SelectedCells[0].ColumnIndex].Formula;
 
                 }
                 else
@@ -58,10 +57,13 @@ namespace LabExcel
                     int row = e.RowIndex;
                     if(formulaTextBox.Text.EndsWith("=") || formulaTextBox.Text.EndsWith("+")
                         || formulaTextBox.Text.EndsWith("-") || formulaTextBox.Text.EndsWith("*")
-                        || formulaTextBox.Text.EndsWith("/") || formulaTextBox.Text.EndsWith("%"))
+                        || formulaTextBox.Text.EndsWith("/") || formulaTextBox.Text.EndsWith("%") 
+                        || formulaTextBox.Text == string.Empty)
                     {
-                        string cellName = GetCellIndex(col, row);
-                        formulaTextBox.Text += cellName;
+     //                   string cellName = GetCellIndex(col, row);
+                        formulaTextBox.Text += Data.cellsList[row][col].Name;
+                        label1.Text = Data.cellsList[row][col].Name;
+                        formulaTextBox.SelectionStart = formulaTextBox.Text.Length;
                     }
 
                     //       string value = dataGridView.Rows[row].Cells[col].Value.ToString();             
@@ -73,15 +75,6 @@ namespace LabExcel
             }
         }
 
-        private string GetCellIndex(int colIndex, int rowIndex)
-        {
-            char column = (char)(colIndex + 65);
-            int row = rowIndex + 1;
-            string cellName = column.ToString() + row;
-            label1.Text = cellName;
-
-            return cellName;
-        }
 
         private void formulaTextBox_KeyDown (object sender, KeyEventArgs e)
         {
@@ -94,13 +87,18 @@ namespace LabExcel
                         var formula = formulaTextBox.Text.Substring(1);
                         var res = Calculator.Evaluate(formula);
                         dataGridView.SelectedCells[0].Value = res.ToString();
+                        Data.cellsList[dataGridView.SelectedCells[0].RowIndex][dataGridView.SelectedCells[0].ColumnIndex].Value = res.ToString();
+                        Data.tableIdentifier.Add(Data.cellsList[dataGridView.SelectedCells[0].RowIndex][dataGridView.SelectedCells[0].ColumnIndex].Name, res);
+
                     }
                     else
                     {
                         dataGridView.SelectedCells[0].Value = formulaTextBox.Text;
-                    }
+                        Data.cellsList[dataGridView.SelectedCells[0].RowIndex][dataGridView.SelectedCells[0].ColumnIndex].Value = formulaTextBox.Text;
+                        Data.tableIdentifier.Add(Data.cellsList[dataGridView.SelectedCells[0].RowIndex][dataGridView.SelectedCells[0].ColumnIndex].Name, Double.Parse(formulaTextBox.Text));
 
-                    formulas[dataGridView.SelectedCells[0].RowIndex][dataGridView.SelectedCells[0].ColumnIndex] = formulaTextBox.Text;
+                    }
+                    Data.cellsList[dataGridView.SelectedCells[0].RowIndex][dataGridView.SelectedCells[0].ColumnIndex].Formula = formulaTextBox.Text;
                 }
                 else
                 {
