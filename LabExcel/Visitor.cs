@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace LabCalculator
 {
     class LabCalculatorVisitor : LabCalculatorBaseVisitor<double>
-{
+    {
         public override double VisitCompileUnit(LabCalculatorParser.CompileUnitContext context)
         {
             return Visit(context.expression());
@@ -25,68 +25,20 @@ namespace LabCalculator
         public override double VisitIdentifierExpr(LabCalculatorParser.IdentifierExprContext context)
         {
 
-
             var result = context.GetText();
             double value = 0.0;
-            //видобути значення змінної з таблиці
-            //            if (Data.tableIdentifier.TryGetValue(result.ToString(), out value))
-            //            {
-            //                return value;
-            //            }
-            //            else
-            //            {
-            //                return 0.0;
-            //            }
 
-            var element = (from list in Data.cellsList
+            var resultCell = (from list in Data.cellsList
                            from cell in list
                            where cell.Name == result
                            select cell).FirstOrDefault();
 
-            value = double.Parse(element.Value);
+            value = double.Parse(resultCell.Value);
 
             return value;
 
-
-
-
         }
 
-        //          var result = context.GetText();
-        //          double value = 0.0;
-        //видобути значення змінної з таблиці
-
-        //           foreach (List<DataCell> list in Data.cellsList)
-        //           {
-        //               value = Double.Parse(list.Find(i => i.Name == result).Value);
-        //           }
-        //               return value;
-        //       }
-
-        //       var result = context.GetText();
-        //           double value;
-
-        //            char columnLetter = result[0];
-        //            int column = (int)columnLetter - 65;
-
-        //            int row = Int32.Parse(result.Substring(1));
-
-        //            mainForm form = new mainForm();
-        //            value = Double.Parse(Data.cellsList[row][column].Value);
-        //           value = (double)(form.dataGridView.Rows[row].Cells[column].Value);
-
-        //            Debug.WriteLine(value);
-
-        //          return value;
-        //           if (tableIdentifier.TryGetValue(result.ToString(), out value))
-        //           {
-        //               return value;
-        //           }
-        //           else
-        //           {
-        //               return 0.0;
-        //           }
-        //       }
         public override double VisitParenthesizedExpr(LabCalculatorParser.ParenthesizedExprContext context)
         {
             return Visit(context.expression());
@@ -137,8 +89,16 @@ namespace LabCalculator
             }
             else
             {
-                Debug.WriteLine("{0} {1}", left, right);
-                return left % right;
+                if (right == 0)
+                {
+                    MessageBox.Show("Error!");
+                    return 0;
+                }
+                else
+                {
+                    Debug.WriteLine("{0} {1}", left, right);
+                    return left % right;
+                }
             }
         }
         public override double VisitIncExpr(LabCalculatorParser.IncExprContext context)
