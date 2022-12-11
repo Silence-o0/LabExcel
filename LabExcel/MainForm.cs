@@ -84,11 +84,6 @@ namespace LabExcel
                     MessageBox.Show("Не вдалось заповнити комірки значеннями.");
                 }
             }
-            else
-            {
-                MessageBox.Show("Файл порожній.");
-                return;
-            }
         }
 
         private void CreateNewTableButton_Click(object sender, EventArgs e)
@@ -335,21 +330,10 @@ namespace LabExcel
 
         private void OpenAs()
         {
-            try
-            {
-                dataGridView.SelectionMode = DataGridViewSelectionMode.CellSelect;
-                FileWorker.OpenFile();
 
-                // Очищуємо dataGridView
-                dataGridView.Rows.Clear();
-                dataGridView.Columns.Clear();
+            FileWorker.OpenFile(dataGridView);
+            CreateTableByList();
 
-                CreateTableByList();
-            }
-            catch
-            {
-                MessageBox.Show("Не вдалось відкрити файл.");
-            }
         }
         private void DeleteButton_Click(object sender, EventArgs e)
         {

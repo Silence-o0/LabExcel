@@ -56,7 +56,7 @@ namespace LabExcel
                 MessageBox.Show("Не вдалось зберегти файл.");
             }
         }
-        internal static void OpenFile()
+        internal static void OpenFile(DataGridView dataGridView)
         {
             OpenFileDialog openFile = new()
             {
@@ -70,6 +70,8 @@ namespace LabExcel
 
                 try
                 {
+                    dataGridView.SelectionMode = DataGridViewSelectionMode.CellSelect;
+
                     var jsonContent = File.ReadAllText(Data.Path);
 
                     Data.cellsList = JsonSerializer.Deserialize<List<List<DataCell>>>(jsonContent, new JsonSerializerOptions
@@ -79,9 +81,15 @@ namespace LabExcel
 
                     if (CheckFileWholeness() == false)
                     {
+                        Data.cellsList = null;
                         MessageBox.Show("Файл пошкоджений.");
                         return;
                     }
+
+                    // Очищуємо dataGridView
+                    dataGridView.Rows.Clear();
+                    dataGridView.Columns.Clear();
+         
                 }
                 catch
                 {
