@@ -113,6 +113,16 @@ namespace LabExcel.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap InfoWindow {
+            get {
+                object obj = ResourceManager.GetObject("InfoWindow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap галочка {
             get {
                 object obj = ResourceManager.GetObject("галочка", resourceCulture);

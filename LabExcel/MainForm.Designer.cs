@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace LabExcel
 {
-    partial class mainForm
+    partial class MainForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -34,20 +34,12 @@ namespace LabExcel
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.A_Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.B_Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.C_Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.D_Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.E_Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.F_Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.G_Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.H_Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.I_Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.J_Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripButton = new System.Windows.Forms.ToolStripMenuItem();
+            this.createNewTableButton = new System.Windows.Forms.ToolStripMenuItem();
             this.generalSaveButton = new System.Windows.Forms.ToolStripMenuItem();
             this.saveButton = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsButton = new System.Windows.Forms.ToolStripMenuItem();
@@ -80,16 +72,7 @@ namespace LabExcel
             this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView.ColumnHeadersHeight = 35;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.A_Column,
-            this.B_Column,
-            this.C_Column,
-            this.D_Column,
-            this.E_Column,
-            this.F_Column,
-            this.G_Column,
-            this.H_Column,
-            this.I_Column,
-            this.J_Column});
+            this.A_Column});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -120,10 +103,10 @@ namespace LabExcel
             this.dataGridView.ShowRowErrors = false;
             this.dataGridView.Size = new System.Drawing.Size(883, 446);
             this.dataGridView.TabIndex = 1;
-            this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
-            this.dataGridView.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView_CellMouseDown);
-            this.dataGridView.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView_ColumnHeaderMouseClick);
-            this.dataGridView.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView_RowHeaderMouseClick);
+            this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_CellClick);
+            this.dataGridView.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGridView_CellMouseDown);
+            this.dataGridView.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGridView_ColumnHeaderMouseClick);
+            this.dataGridView.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGridView_RowHeaderMouseClick);
             this.dataGridView.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.DataGridView_RowPostPaint);
             // 
             // A_Column
@@ -134,87 +117,6 @@ namespace LabExcel
             this.A_Column.ReadOnly = true;
             this.A_Column.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.A_Column.Width = 120;
-            // 
-            // B_Column
-            // 
-            this.B_Column.HeaderText = "B";
-            this.B_Column.MinimumWidth = 8;
-            this.B_Column.Name = "B_Column";
-            this.B_Column.ReadOnly = true;
-            this.B_Column.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.B_Column.Width = 120;
-            // 
-            // C_Column
-            // 
-            this.C_Column.HeaderText = "C";
-            this.C_Column.MinimumWidth = 8;
-            this.C_Column.Name = "C_Column";
-            this.C_Column.ReadOnly = true;
-            this.C_Column.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.C_Column.Width = 120;
-            // 
-            // D_Column
-            // 
-            this.D_Column.HeaderText = "D";
-            this.D_Column.MinimumWidth = 8;
-            this.D_Column.Name = "D_Column";
-            this.D_Column.ReadOnly = true;
-            this.D_Column.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.D_Column.Width = 120;
-            // 
-            // E_Column
-            // 
-            this.E_Column.HeaderText = "E";
-            this.E_Column.MinimumWidth = 8;
-            this.E_Column.Name = "E_Column";
-            this.E_Column.ReadOnly = true;
-            this.E_Column.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.E_Column.Width = 120;
-            // 
-            // F_Column
-            // 
-            this.F_Column.HeaderText = "F";
-            this.F_Column.MinimumWidth = 8;
-            this.F_Column.Name = "F_Column";
-            this.F_Column.ReadOnly = true;
-            this.F_Column.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.F_Column.Width = 120;
-            // 
-            // G_Column
-            // 
-            this.G_Column.HeaderText = "G";
-            this.G_Column.MinimumWidth = 8;
-            this.G_Column.Name = "G_Column";
-            this.G_Column.ReadOnly = true;
-            this.G_Column.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.G_Column.Width = 120;
-            // 
-            // H_Column
-            // 
-            this.H_Column.HeaderText = "H";
-            this.H_Column.MinimumWidth = 8;
-            this.H_Column.Name = "H_Column";
-            this.H_Column.ReadOnly = true;
-            this.H_Column.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.H_Column.Width = 120;
-            // 
-            // I_Column
-            // 
-            this.I_Column.HeaderText = "I";
-            this.I_Column.MinimumWidth = 8;
-            this.I_Column.Name = "I_Column";
-            this.I_Column.ReadOnly = true;
-            this.I_Column.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.I_Column.Width = 120;
-            // 
-            // J_Column
-            // 
-            this.J_Column.HeaderText = "J";
-            this.J_Column.MinimumWidth = 8;
-            this.J_Column.Name = "J_Column";
-            this.J_Column.ReadOnly = true;
-            this.J_Column.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.J_Column.Width = 120;
             // 
             // menuStrip1
             // 
@@ -230,11 +132,19 @@ namespace LabExcel
             // fileToolStripButton
             // 
             this.fileToolStripButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.createNewTableButton,
             this.generalSaveButton,
             this.openAsButton});
             this.fileToolStripButton.Name = "fileToolStripButton";
             this.fileToolStripButton.Size = new System.Drawing.Size(69, 29);
             this.fileToolStripButton.Text = "Файл";
+            // 
+            // createNewTableButton
+            // 
+            this.createNewTableButton.Name = "createNewTableButton";
+            this.createNewTableButton.Size = new System.Drawing.Size(227, 34);
+            this.createNewTableButton.Text = "Нова таблиця";
+            this.createNewTableButton.Click += new System.EventHandler(this.CreateNewTableButton_Click);
             // 
             // generalSaveButton
             // 
@@ -242,35 +152,36 @@ namespace LabExcel
             this.saveButton,
             this.saveAsButton});
             this.generalSaveButton.Name = "generalSaveButton";
-            this.generalSaveButton.Size = new System.Drawing.Size(270, 34);
+            this.generalSaveButton.Size = new System.Drawing.Size(227, 34);
             this.generalSaveButton.Text = "Зберегти";
             // 
             // saveButton
             // 
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(270, 34);
+            this.saveButton.Size = new System.Drawing.Size(210, 34);
             this.saveButton.Text = "Зберегти";
             this.saveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // saveAsButton
             // 
             this.saveAsButton.Name = "saveAsButton";
-            this.saveAsButton.Size = new System.Drawing.Size(270, 34);
+            this.saveAsButton.Size = new System.Drawing.Size(210, 34);
             this.saveAsButton.Text = "Зберегти як";
-            this.saveAsButton.Click += new System.EventHandler(this.saveAsButton_Click);
+            this.saveAsButton.Click += new System.EventHandler(this.SaveAsButton_Click);
             // 
             // openAsButton
             // 
             this.openAsButton.Name = "openAsButton";
-            this.openAsButton.Size = new System.Drawing.Size(270, 34);
+            this.openAsButton.Size = new System.Drawing.Size(227, 34);
             this.openAsButton.Text = "Відкрити як";
-            this.openAsButton.Click += new System.EventHandler(this.openAsButton_Click);
+            this.openAsButton.Click += new System.EventHandler(this.OpenAsButton_Click);
             // 
             // infoButton
             // 
             this.infoButton.Name = "infoButton";
             this.infoButton.Size = new System.Drawing.Size(93, 29);
             this.infoButton.Text = "Довідка";
+            this.infoButton.Click += new System.EventHandler(this.InfoButton_Click);
             // 
             // formulaTextBox
             // 
@@ -280,7 +191,7 @@ namespace LabExcel
             this.formulaTextBox.Name = "formulaTextBox";
             this.formulaTextBox.Size = new System.Drawing.Size(374, 31);
             this.formulaTextBox.TabIndex = 6;
-            this.formulaTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.formulaTextBox_KeyDown);
+            this.formulaTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormulaTextBox_KeyDown);
             // 
             // pictureBox1
             // 
@@ -313,7 +224,7 @@ namespace LabExcel
             this.addRowButton.TabIndex = 8;
             this.addRowButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.addRowButton.UseVisualStyleBackColor = true;
-            this.addRowButton.Click += new System.EventHandler(this.addRowButton_Click);
+            this.addRowButton.Click += new System.EventHandler(this.AddRowButton_Click);
             // 
             // addColumnButton
             // 
@@ -333,7 +244,7 @@ namespace LabExcel
             this.addColumnButton.TabIndex = 9;
             this.addColumnButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.addColumnButton.UseVisualStyleBackColor = true;
-            this.addColumnButton.Click += new System.EventHandler(this.addColumnButton_Click);
+            this.addColumnButton.Click += new System.EventHandler(this.AddColumnButton_Click);
             // 
             // deleteButton
             // 
@@ -355,7 +266,7 @@ namespace LabExcel
             this.deleteButton.TabIndex = 10;
             this.deleteButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.deleteButton.UseVisualStyleBackColor = false;
-            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            this.deleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // acceptButton
             // 
@@ -376,9 +287,9 @@ namespace LabExcel
             this.acceptButton.TabIndex = 11;
             this.acceptButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.acceptButton.UseVisualStyleBackColor = false;
-            this.acceptButton.Click += new System.EventHandler(this.acceptButton_Click);
+            this.acceptButton.Click += new System.EventHandler(this.AcceptButton_Click);
             // 
-            // mainForm
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -393,7 +304,7 @@ namespace LabExcel
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(747, 492);
-            this.Name = "mainForm";
+            this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Table";
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -413,15 +324,6 @@ namespace LabExcel
         private ToolStripMenuItem openAsButton;
         private ToolStripMenuItem infoButton;
         private DataGridViewTextBoxColumn A_Column;
-        private DataGridViewTextBoxColumn B_Column;
-        private DataGridViewTextBoxColumn C_Column;
-        private DataGridViewTextBoxColumn D_Column;
-        private DataGridViewTextBoxColumn E_Column;
-        private DataGridViewTextBoxColumn F_Column;
-        private DataGridViewTextBoxColumn G_Column;
-        private DataGridViewTextBoxColumn H_Column;
-        private DataGridViewTextBoxColumn I_Column;
-        private DataGridViewTextBoxColumn J_Column;
         private TextBox formulaTextBox;
         private ToolStripMenuItem saveButton;
         private ToolStripMenuItem saveAsButton;
@@ -431,5 +333,6 @@ namespace LabExcel
         private Button deleteButton;
         private Button acceptButton;
         private DataGridView dataGridView;
+        private ToolStripMenuItem createNewTableButton;
     }
 }

@@ -26,6 +26,10 @@ namespace LabExcel
                 deleteOne.Text = "Видалити один рядок:";
                 deleteFew.Text = "Видалити рядки:";
 
+                textBoxSingleElement.MaxLength = int.MaxValue;
+                textBoxFirstElement.MaxLength = int.MaxValue;
+                textBoxLastElement.MaxLength = int.MaxValue;
+
                 if (Data.firstElementToDelete != -1 && Data.lastElementToDelete != -1)
                 {
                     string firstRowToDelete = (Data.firstElementToDelete + 1).ToString();
@@ -43,12 +47,16 @@ namespace LabExcel
                 deleteOne.Text = "Видалити один стовпчик:";
                 deleteFew.Text = "Видалити стовпчики:";
 
+                textBoxSingleElement.MaxLength = 1;
+                textBoxFirstElement.MaxLength = 1;
+                textBoxLastElement.MaxLength = 1;
+
                 if (Data.firstElementToDelete != -1 && Data.lastElementToDelete != -1)
                 {
-                    char firstColumnToDelete = (char)(Data.firstElementToDelete + Data.firstUpperASCII);
-                    char lastColumnToDelete = (char)(Data.lastElementToDelete + Data.firstUpperASCII);
+                    string firstColumnToDelete = ConverterColumnIndex.ConvertIndexToStringSymbol(Data.firstElementToDelete);
+                    string lastColumnToDelete = ConverterColumnIndex.ConvertIndexToStringSymbol(Data.lastElementToDelete);
 
-                    EnterDataToTextBoxes(firstColumnToDelete.ToString(), lastColumnToDelete.ToString());
+                    EnterDataToTextBoxes(firstColumnToDelete, lastColumnToDelete);
                 }
                 else
                 {
@@ -263,12 +271,10 @@ namespace LabExcel
         {
             try
             {
-                char firstColumn = first[0]; 
-                char lastColumn = last[0];
 
                 // перетворюємо символи char в індекси стовпчиків
-                int firstIndex = (int)firstColumn - Data.firstUpperASCII;  
-                int lastIndex = (int)lastColumn - Data.firstUpperASCII;
+                int firstIndex = ConverterColumnIndex.ConvertStringSymbolToIndex(first);
+                int lastIndex = ConverterColumnIndex.ConvertStringSymbolToIndex(last);
 
                 if (CheckColumnExisting(firstIndex) == true && CheckColumnExisting(lastIndex) == true)
                 {
